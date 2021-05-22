@@ -1,4 +1,4 @@
-# Genetic_Rat_Mutations
+# Genetic Rat Mutations
 
 Let's kick it all off by naming some variables.
 ```
