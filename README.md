@@ -11,7 +11,7 @@ try every possible solution. Instead, they continuously grade solutions and then
 main indicator of a solution's viability. The largest rats, should over time, create even larger rats if paired together with some of the largest rats in the opposite sex's population.  
 
 PHEW. Science! 
-Enough talk. Let's kick it all off by naming some variables.
+Enough talk. Let's kick it all off by breaking down the process and naming some variables.
 ```
 GOAL = 50000
 NUM_RATS = 20
