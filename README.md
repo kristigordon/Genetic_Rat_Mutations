@@ -1,5 +1,6 @@
 # Genetic Rat Mutations
 
+
 Let's kick it all off by naming some variables.
 ```
 GOAL = 50000
@@ -62,6 +63,9 @@ If population is > 20, we need to take out extra rats and keep the best ones.
 rats.append(200)
 rats.append(600)
 ^ Used to add those values but every time you run, appends the values again
+
+![image](https://user-images.githubusercontent.com/66803124/119214357-0d312380-ba7b-11eb-815c-c03032aa14ac.png)
+
 ```
 to_retain = 20
 sorted_rats = sorted(rats)
@@ -93,6 +97,9 @@ STEP 4: Cross over elements in the best solutions to make new solutions
 
 So take the selected females and males that we kept, the heaviest pairs, and use them to
 cross over (breed) and make new solutions (children).
+
+![image](https://user-images.githubusercontent.com/66803124/119214407-86307b00-ba7b-11eb-9863-e867f4411b31.png)
+
 ```
 random.shuffle(females_to_keep)
 random.shuffle(males_to_keep)
