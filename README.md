@@ -7,7 +7,7 @@ mimic the process of natural selection and belong under the umbrella of evolutio
 and used to predict potential results without the need for the physical harm of, in this case alone, thousands of animals.
 
   Today, we will create a massive strain of rats using Python and genetic algorithms. Unlike exhaustive search engines, which use pure brute force, genetic algorithms don’t
-try every possible solution. Instead, they continuously grade solutions and then use them to make “informed guesses” going forward. In our case, this will mean we are uliltilizing Python's random and statistics libraries to attempt to mimic the way this biological selection of traits would occur. For our experiment, weight is the 
+try every possible solution. Instead, they continuously grade solutions and then use them to make “informed guesses” going forward. In our case, this will mean we are utilizing  Python's random and statistics libraries to attempt to mimic the way this biological selection of traits would occur. For our experiment, weight is the 
 main indicator of a solution's viability. The largest rats, should over time, create even larger rats if paired together with some of the largest rats in the opposite sex's population.  
 
 PHEW. Science! 
