@@ -1,11 +1,17 @@
 ![image](https://user-images.githubusercontent.com/66803124/119214591-dd831b00-ba7c-11eb-84f6-799b89c4dff9.png)
 
-# Genetic Rat Mutations
+# Natural Selection or Massive Mutation?
 
-Genetic algorithms optimize, which means that they select the best solution (with
-regard to some criteria) from a set of available alternatives.
+Certain problems are a little too elegant for any brute force solution and the creation of new life is just one of those things. Genetic algorithms are used to partially 
+mimic the process of natural selection and belong under the umbrella of evolution algorithms. Genetic algorithms are commonly in optimiztion and search problems due to their ability to generate high-quality solutions. By relying on biologically inspired operators such as mutation, crossover and selection, natural selection can be simiulated 
+and used to predict potential results without the need for the physical harm of, in this case alone, thousands of animals.
 
-Let's kick it all off by naming some variables.
+Today, we will create a massive strain of rats using Python and genetic algorithms. Unlike exhaustive search engines, which use pure brute force, genetic algorithms don’t
+try every possible solution. Instead, they continuously grade solutions and then use them to make “informed guesses” going forward. In our case, this will mean we are uliltilizing Python's random and statistics libraries to attempt to mimic the way this biological selection of traits would occur. For our experiment, weight is the 
+main indicator of a solution's viability. The largest rats, should over time, create even larger rats if paired together with some of the largest rats in the opposite sex's population.  
+
+PHEW. Science! 
+Enough talk. Let's kick it all off by naming some variables.
 ```
 GOAL = 50000
 NUM_RATS = 20
