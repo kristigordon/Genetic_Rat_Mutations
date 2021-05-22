@@ -2,11 +2,11 @@
 
 # Natural Selection or Massive Mutation?
 
-Certain problems are a little too elegant for any brute force solution and the creation of new life is just one of those things. Genetic algorithms are used to partially 
+  Certain problems are a little too elegant for any brute force solution and the creation of new life is just one of those things. Genetic algorithms are used to partially 
 mimic the process of natural selection and belong under the umbrella of evolution algorithms. Genetic algorithms are commonly in optimiztion and search problems due to their ability to generate high-quality solutions. By relying on biologically inspired operators such as mutation, crossover and selection, natural selection can be simiulated 
 and used to predict potential results without the need for the physical harm of, in this case alone, thousands of animals.
 
-Today, we will create a massive strain of rats using Python and genetic algorithms. Unlike exhaustive search engines, which use pure brute force, genetic algorithms don’t
+  Today, we will create a massive strain of rats using Python and genetic algorithms. Unlike exhaustive search engines, which use pure brute force, genetic algorithms don’t
 try every possible solution. Instead, they continuously grade solutions and then use them to make “informed guesses” going forward. In our case, this will mean we are uliltilizing Python's random and statistics libraries to attempt to mimic the way this biological selection of traits would occur. For our experiment, weight is the 
 main indicator of a solution's viability. The largest rats, should over time, create even larger rats if paired together with some of the largest rats in the opposite sex's population.  
 
@@ -340,4 +340,8 @@ if mutate_odds >= random.random():
 children[index] = round(rat * random.uniform(mutate_min, mutate_max))
 return children
 ```
+
+Thank you for making it this far! I hope you found some interesting ideas and got to see another level of coding beyond the more traditional uses. 
+Code is so dynamic and has a limitless amount of applications. Keep creating. Keep learning. 
+
 ![image](https://user-images.githubusercontent.com/66803124/119214487-1ec6fb00-ba7c-11eb-8af4-e704e2143812.png)
