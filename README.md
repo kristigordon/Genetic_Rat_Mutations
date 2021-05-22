@@ -1,5 +1,9 @@
+![image](https://user-images.githubusercontent.com/66803124/119214591-dd831b00-ba7c-11eb-84f6-799b89c4dff9.png)
+
 # Genetic Rat Mutations
 
+Genetic algorithms optimize, which means that they select the best solution (with
+regard to some criteria) from a set of available alternatives.
 
 Let's kick it all off by naming some variables.
 ```
@@ -16,7 +20,7 @@ LITTERS_PER_YEAR = 10
 GENERATION_LIMIT = 500
 ```
 
-Ensure even number of rats for breeding pairs:
+Ensure even number of rats for breeding pairs by using the modulo function. This function will divide the numerical value by the number chosen, in this case we need an even number of rats so % 2 will work great. If a number is 10 % 2, this will be 0 remaining since 2 can go into 10 5 times. However, 11 % 2 would be 1 since there would be 1 remaining after dividing the two numbers.
 ```
 if NUM_RATS % 2 != 0:
     NUM_RATS += 1
@@ -98,7 +102,7 @@ STEP 4: Cross over elements in the best solutions to make new solutions
 So take the selected females and males that we kept, the heaviest pairs, and use them to
 cross over (breed) and make new solutions (children).
 
-![image](https://user-images.githubusercontent.com/66803124/119214407-86307b00-ba7b-11eb-9863-e867f4411b31.png)
+![image](https://user-images.githubusercontent.com/66803124/119214465-f0e1b680-ba7b-11eb-8c14-d1e3d67d1482.png)
 
 ```
 random.shuffle(females_to_keep)
@@ -330,3 +334,4 @@ if mutate_odds >= random.random():
 children[index] = round(rat * random.uniform(mutate_min, mutate_max))
 return children
 ```
+![image](https://user-images.githubusercontent.com/66803124/119214487-1ec6fb00-ba7c-11eb-8af4-e704e2143812.png)
