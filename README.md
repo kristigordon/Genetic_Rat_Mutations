@@ -1,4 +1,6 @@
 # Genetic_Rat_Mutations
+
+Let's kick it all off by naming some variables.
 ```
 GOAL = 50000
 NUM_RATS = 20
@@ -11,64 +13,87 @@ MUTATE_MAX = 1.2
 LITTER_SIZE = 8
 LITTERS_PER_YEAR = 10
 GENERATION_LIMIT = 500
+```
 
-# ensure even­number of rats for breeding pairs:
+Ensure even number of rats for breeding pairs:
+```
 if NUM_RATS % 2 != 0:
     NUM_RATS += 1
 import time
 import random
 import statistics 
 rat = random.triangular(INITIAL_MIN_WT, INITIAL_MAX_WT, INITIAL_MODE_WT) 
-# STEP 1: Randomly generate a population of solutions.
+```
+STEP 1: Randomly generate a population of solutions.
+```
 print(rat)
 519.8376953468256
+
 rats = []
 
 for i in range(20):
     random_weight = random.triangular(INITIAL_MIN_WT, INITIAL_MAX_WT, INITIAL_MODE_WT)
     rats.append(int(random_weight))
+```
+To see how this is looking so far:
+```
 print(rats)
 [319, 484, 364, 310, 299, 244, 439, 320, 260, 315, 524, 304, 224, 340, 293, 313, 439, 424, 465, 318]
-#STEP 2: Measure the fitness of the population - By taking the average weight and comparing it with 
-#our goal. if avg wt is >= goal, we can stop. 
+```
+STEP 2: Measure the fitness of the population - 
 
+By taking the average weight and comparing it with our goal. if avg wt is >= goal, we can stop. 
+```
 average = statistics.mean(rats)
 marker = average/GOAL
+```
+
+```
 print(average)
 print(marker)
 349.9
 0.006998
-# STEP 3: Select the best solution and discard the rest
-# Num Rats = 20, we want to keep the population at 20. 
-# If population is > 20, we need to take out extra rats and keep the best ones. 
-# rats.append(200)
-# rats.append(600)
-# ^ Used to add those values but every time you run, appends the values again
+```
+STEP 3: Select the best solution and discard the rest
+Num Rats = 20, we want to keep the population at 20. 
+
+If population is > 20, we need to take out extra rats and keep the best ones. 
+
+rats.append(200)
+rats.append(600)
+^ Used to add those values but every time you run, appends the values again
+```
 to_retain = 20
 sorted_rats = sorted(rats)
 to_retain_by_sex = to_retain // 2
-# Since we are retaining 20, we want to // 2 to have 10 of each sex.
-# // double slash is in case there is an odd number, we still get an even answer.
+```
+Since we are retaining 20, we want to // 2 to have 10 of each sex.
+// double slash is in case there is an odd number, we still get an even answer.
+```
 members_per_sex = len(rats) // 2
 females = sorted_rats[:11]
 males = sorted_rats[11:]
 females_to_keep = females[-10:]
 males_to_keep = males[-10:]
-# -10 in these sorted lists means that we are keep the 10 heaviest rats.
+```
+-10 in these sorted lists means that we are keep the 10 heaviest rats.
+```
 print(sorted_rats)
-print(females)
-print(males)
-print(females_to_keep)
-print(males_to_keep)
 [200, 224, 244, 260, 293, 299, 304, 310, 313, 315, 318, 319, 320, 340, 364, 424, 439, 439, 465, 484, 524, 600]
+print(females)
 [200, 224, 244, 260, 293, 299, 304, 310, 313, 315, 318]
+print(males)
 [319, 320, 340, 364, 424, 439, 439, 465, 484, 524, 600]
+print(females_to_keep)
 [224, 244, 260, 293, 299, 304, 310, 313, 315, 318]
+print(males_to_keep)
 [320, 340, 364, 424, 439, 439, 465, 484, 524, 600]
-# STEP 4: Cross over elements in the best solutions to make new solutions
-# So take the selected females and males that we kept, the heaviest pairs, and use them to
-# cross over (breed) and make new solutions (children).
+```
+STEP 4: Cross over elements in the best solutions to make new solutions
 
+So take the selected females and males that we kept, the heaviest pairs, and use them to
+cross over (breed) and make new solutions (children).
+```
 random.shuffle(females_to_keep)
 random.shuffle(males_to_keep)
 print(females_to_keep)
@@ -77,45 +102,53 @@ print(males_to_keep)
 children = []
 litter_size = 8
 pairs = zip(females_to_keep, males_to_keep)
-# Zip takes each item from each list and puts them together, in this case it pairs a female
-# from our list of kept female rats with a male from our list of kept male rats.
-# This creates a tuple, which is similar to a list but is instead immutable or 
-# unchangable once created.
+```
+Zip takes each item from each list and puts them together, in this case it pairs a female
+from our list of kept female rats with a male from our list of kept male rats.
+
+This creates a tuple, which is similar to a list but is instead immutable or 
+unchangable once created.
+```
 for female, male in zip(females_to_keep, males_to_keep):
     for child in range(litter_size):
         child = random.randint(female, male)
+```
     # randint allows for a random integer to be created that is between the weight of the 
     # female and male parents, thus creating their child.
     # Since we have our females lighter than males, we can go (females, males) since they ascending
         children.append(child)
     # Now we append the child into the list of children
+```
 print(list(pairs))
 print(children)
 [318, 299, 315, 224, 293, 304, 313, 310, 244, 260]
 [320, 424, 340, 439, 600, 465, 439, 484, 524, 364]
 [(318, 320), (299, 424), (315, 340), (224, 439), (293, 600), (304, 465), (313, 439), (310, 484), (244, 524), (260, 364)]
 [318, 319, 320, 320, 318, 319, 320, 320, 385, 413, 349, 312, 302, 302, 309, 323, 337, 319, 316, 319, 328, 333, 340, 338, 356, 314, 417, 291, 361, 238, 318, 367, 382, 385, 494, 395, 512, 367, 384, 414, 456, 431, 306, 383, 342, 375, 352, 397, 357, 359, 331, 322, 350, 421, 421, 356, 337, 448, 384, 418, 311, 449, 336, 409, 286, 440, 395, 264, 460, 470, 379, 354, 339, 273, 350, 294, 288, 280, 324, 336]
-# STEP 5: Mutate a small number of elements in the solutions by changing their value.
-# The number of elements in the list of children.
-# enumerate allows you to keep count of the list and change the elements of the list. 
+```
+STEP 5: Mutate a small number of elements in the solutions by changing their value.
+
+The number of elements in the list of children.
+
+Enumerate allows you to keep count of the list and change the elements of the list. 
+```
 for index, rat in enumerate(children):
-    #print(index)
-    # prints the number of children we created.
-    #print(rat)
-    # prints the weights of the rats
-    # ex: 0, 318, 1, 319... 
-    print(random.random())
-    # randomly gives a floating point value between 0 and 1.0.
-    # This goes to the "Chance of Mutation"
+    print(random.random())   
     if MUTATE_ODDS >= random.random():
-    # MUTATE_ODDS=0.01 Probability of a mutation occurring in a rat
-    # If the mutate odds are >= the random.random, we are going to mutate the child.
-        children[index] = round(rat * random.uniform(MUTATE_MIN, MUTATE_MAX))
-    # round is to roudn the number back to a whole number after multiplying it by the random.uniform
-    # random.uniform is going to give a random floating point number between the mutate min
-    # and mutate max in our case. 
-    # MUTATE_MIN=0.5 Scalar on rat weight of least beneficial mutation
-    # MUTATE_MAX=1.2 Scalar on rat weight of most beneficial mutation
+    children[index] = round(rat * random.uniform(MUTATE_MIN, MUTATE_MAX))
+    
+```
+MUTATE_ODDS=0.01 Probability of a mutation occurring in a rat
+
+If the mutate odds are >= the random.random, we are going to mutate the child.
+ 
+round is to round the number back to a whole number after multiplying it by the random.uniform
+random.uniform is going to give a random floating point number between the mutate min
+and mutate max in our case. 
+
+MUTATE_MIN=0.5 Scalar on rat weight of least beneficial mutation
+MUTATE_MAX=1.2 Scalar on rat weight of most beneficial mutation
+```
 print(children)
     
 0.29172007862188754
@@ -199,56 +232,94 @@ print(children)
 0.8345900197883804
 0.5078689825902895
 [318, 319, 320, 320, 318, 319, 320, 320, 385, 413, 349, 312, 302, 302, 309, 323, 337, 319, 316, 319, 328, 333, 340, 338, 356, 314, 417, 291, 361, 238, 318, 367, 382, 385, 494, 395, 512, 367, 384, 414, 456, 431, 306, 383, 342, 375, 352, 397, 357, 359, 331, 322, 350, 421, 421, 356, 337, 448, 384, 418, 311, 449, 336, 409, 286, 440, 395, 264, 460, 470, 379, 354, 339, 273, 350, 294, 288, 280, 324, 336]
+```
+```
 def populate (num_rats, min_wt, max_wt, mode_wt):
     return [int(random.triangular(min_wt, max_wt, mode_wt)) for i in range(num_rats)]
 
 def fitness(population, goal):
-# Measure population fitness based on an attribute mean vs target.
+```
+Measure population fitness based on an attribute mean vs target.
+```
     ave = statistics.mean(population)
     return ave / goal
 
 def select(population, to_retain):
-    # population is the list, so in our example "rats"
-    sorted_population = sorted(population)
-    # sort the population ascending
-    to_retain_by_sex = to_retain//2
-    # out of the 20 we are retaining, we want 10 in each sex
-    members_per_sex = len(sorted_population)//2
-    # the sorted population may have more than 20, so we take that length and put half in each sex
-    females = sorted_population[:members_per_sex]
-    # take the sorted pop and start at the beginning and take the first half for females
-    males = sorted_population[members_per_sex:]
-    # take the sorted pop and start at the halfway point and take the second half for males
-    selected_females = females[-to_retain_by_sex:]
-    # since there could more than 20 total rats, we need to ensure the females only have 10.
-    # -to_retain_by_sex means taking the last 10 out of the sorted list of females,
-    # so the last 10 in the list would be the 10 heaviest. (Same for males)
-    selected_males = males[-to_retain_by_sex:]
-    # and that the males only have 10
-    return selected_males, selected_females
+```
+Population is the list, so in our example "rats"
+```
+sorted_population = sorted(population)
+```
+sort the population ascending
+```
+to_retain_by_sex = to_retain//2
+```
+out of the 20 we are retaining, we want 10 in each sex
+```
+members_per_sex = len(sorted_population)//2
+```
+the sorted population may have more than 20, so we take that length and put half in each sex
+```
+females = sorted_population[:members_per_sex]
+```
+take the sorted pop and start at the beginning and take the first half for females
+```
+males = sorted_population[members_per_sex:]
+```
+take the sorted pop and start at the halfway point and take the second half for males
+```
+selected_females = females[-to_retain_by_sex:]
+```
+since there could more than 20 total rats, we need to ensure the females only have 10.
+```
+-to_retain_by_sex means taking the last 10 out of the sorted list of females,
+so the last 10 in the list would be the 10 heaviest. (Same for males)
+```
+```
+selected_males = males[-to_retain_by_sex:]
+```
+and that the males only have 10
+```
+return selected_males, selected_females
     
 def breed(males, females, litter_size):
-"""Crossover genes among members (weights) of a population."""
-    random.shuffle(males)
-    random.shuffle(females)
-    # Shuffle the values
-    children = []
-    # Create a list
-    for male, female in zip(males, females):
-        #Creating tuples for each pair
-        for child in range(litter_size):
-            # Litter size 8
-            child = random.randint(female, male)
-            # breed a child between the female and male weights
-            children.append(child)
-            # add that child to the list of children
+```
+Crossover genes among members (weights) of a population.
+```
+random.shuffle(males)
+random.shuffle(females)
+```
+Shuffle the values
+```
+children = []
+```
+Create a list
+```
+for male, female in zip(males, females):
+```
+Creating tuples for each pair
+```
+for child in range(litter_size):
+```
+Litter size 8
+```
+child = random.randint(female, male)
+```
+breed a child between the female and male weights
+```
+children.append(child)
+```
+add that child to the list of children
+```
     return children
-
+```
+```
 def mutate(children, mutate_odds, mutate_min, mutate_max):
-"""Randomly alter rat weights using input odds & fractional changes."""
-➋ for index, rat in enumerate(children):
+```
+Randomly alter rat weights using input odds & fractional changes.
+```
+for index, rat in enumerate(children):
 if mutate_odds >= random.random():
-➌ children[index] = round(rat * random.uniform(mutate_min,
-mutate_max))
+children[index] = round(rat * random.uniform(mutate_min, mutate_max))
 return children
 ```
