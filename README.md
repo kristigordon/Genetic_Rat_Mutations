@@ -12,6 +12,8 @@ main indicator of a solution's viability. The largest rats, should over time, cr
 
 PHEW. Science! 
 Enough talk. Let's kick it all off by breaking down the process and naming some variables.
+![image](https://user-images.githubusercontent.com/66803124/119241897-a3faf000-bb0e-11eb-9032-cac487339312.png)
+
 ```
 GOAL = 50000
 NUM_RATS = 20
@@ -145,6 +147,8 @@ print(children)
 ```
 STEP 5: Mutate a small number of elements in the solutions by changing their value.
 
+![image](https://user-images.githubusercontent.com/66803124/119241931-dd336000-bb0e-11eb-9ca9-42cad9a95603.png)
+
 The number of elements in the list of children.
 
 Enumerate allows you to keep count of the list and change the elements of the list. 
@@ -165,6 +169,9 @@ and mutate max in our case.
 
 MUTATE_MIN=0.5 Scalar on rat weight of least beneficial mutation
 MUTATE_MAX=1.2 Scalar on rat weight of most beneficial mutation
+
+![image](https://user-images.githubusercontent.com/66803124/119241956-0653f080-bb0f-11eb-8710-f341e15b964a.png)
+
 ```
 print(children)
     
